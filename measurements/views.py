@@ -31,7 +31,7 @@ def measurement_view(request, pk):
     if request.method == 'PUT':
         measurement_dto = ml.update_measurement(pk, json.loads(request.body))
         measurement = serializers.serialize('json',[measurement_dto,])
-        return HttpResponse(measurement, 'appliation/json')
+        return HttpResponse(measurement, 'application/json')
     if request.method == 'DELETE':
         measurement_dto = ml.delete_measurement(pk)
         measurement = serializers.serialize('json',[measurement_dto,])

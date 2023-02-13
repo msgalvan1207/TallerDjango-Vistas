@@ -1,4 +1,7 @@
+import datetime
 from ..models import Measurement
+from variables.models import Variable
+from django.db import models
 
 def get_measurements():
     measurements = Measurement.objects.all()
@@ -9,23 +12,25 @@ def get_measurement(mea_pk):
     return measurement
 
 def create_measurement(mea):
+    print("Empieza la funcion para crear")
     measurement = Measurement(
-        variable = mea["variable"],
+        variable = Variable.objects.get(pk=int(mea["variable"])),
         value = mea["value"],
         unit = mea["unit"],
         place = mea["place"],
-        dateTime = mea["dateTime"]
+        dateTime = models.DateTimeField(mea["dateTime"])
     )
-    measurement.save
+    measurement.save()
     return measurement
 
 def update_measurement(mea_pk, new_mea):
+    print("empieza la funcion que actualiza un mea")
     measurement = get_measurement(mea_pk)
-    measurement.variable = new_mea["variable"]
+    measurement.variable = Variable.objects.get(pk=int(new_mea["variable"]))
     measurement.value = new_mea["value"]
     measurement.unit = new_mea["unit"]
     measurement.place = new_mea["place"]
-    measurement.dateTime = new_mea["dateTime"]
+    measurement.dateTime = datetime.datetime.strptime(new_mea["dateTime"], '%Y-%m-%dT%H:%M:%S.%fZ')
     measurement.save()
     return measurement
 

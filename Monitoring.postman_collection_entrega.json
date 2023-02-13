@@ -427,7 +427,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"variable\": \"1\",\r\n    \"value\": 15,\r\n    \"unit\": \"unidad\",\r\n    \"place\": \"lugar\",\r\n    \"dateTime\": \"2023-02-12T18:31:16.660Z\"\r\n}",
+					"raw": "{\r\n    \"variable\": 1,\r\n    \"value\": 15.0,\r\n    \"unit\": \"unidad\",\r\n    \"place\": \"lugar\",\r\n    \"dateTime\": \"2023-02-12T18:31:16.660Z\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -499,7 +499,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"variable\": \"1\",\r\n    \"value\": 15,\r\n    \"unit\": \"unidad-update\",\r\n    \"place\": \"lugar-update\",\r\n    \"dateTime\": \"2023-02-12T18:31:16.660Z\"\r\n}",
+					"raw": "{\r\n    \"variable\": 1,\r\n    \"value\": 15,\r\n    \"unit\": \"unidad-update\",\r\n    \"place\": \"lugar-update\",\r\n    \"dateTime\": \"2023-02-12T18:31:16.660Z\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -507,7 +507,26 @@
 					}
 				},
 				"url": {
-					"raw": "{{host}}:{{port}}{{api_path}}/measurements/?id=1",
+					"raw": "{{host}}:{{port}}{{api_path}}/measurements/4",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}{{api_path}}",
+					"path": [
+						"measurements",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Measurement",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{host}}:{{port}}{{api_path}}/measurements/?id=3",
 					"host": [
 						"{{host}}"
 					],
@@ -519,18 +538,10 @@
 					"query": [
 						{
 							"key": "id",
-							"value": "1"
+							"value": "3"
 						}
 					]
 				}
-			},
-			"response": []
-		},
-		{
-			"name": "Delete Measurement",
-			"request": {
-				"method": "DELETE",
-				"header": []
 			},
 			"response": []
 		}
